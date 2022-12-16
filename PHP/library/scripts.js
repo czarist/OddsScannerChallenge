@@ -1,16 +1,7 @@
 jQuery(document).ready(function ($) {
 
     generateCSV = () => {
-        // $.ajax({
-        //     type: "POST",
-        //     url: "methods/curl.php",
-        //     data: { request: 'csv' },
-        //     datatype: 'cvs',
-        //     success: function (e) {
-        //         console.log(e);
-        //     }
-        // });
-
+     
         jQuery.ajax({
             url: "methods/curl.php",
             type: 'POST',
