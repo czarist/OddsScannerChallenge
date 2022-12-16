@@ -15,7 +15,6 @@
     position: absolute;
 }
 
-/* Style buttons */
 .btn {
     background-color: black;
     border: none;
@@ -25,7 +24,6 @@
     font-size: 20px;
 }
 
-/* Darker background on mouse-over */
 .btn:hover {
     background-color: #212121;
     color: white;
