@@ -27,10 +27,17 @@
 
     <div class="container">
         <div class="row">
+
             <div class="col-12 d-flex justify-content-center align-items-center">
                 <img src="library/img.png" alt="img" width="250">
             </div>
+
+            <div class="col-12 d-flex justify-content-center align-items-center mb-4">
+                <button onclick="generateCSV();" class="btn"><i class="fa fa-download"></i> Download CVS</button>
+            </div>
+
             <div class="col-2"></div>
+
             <div class="col-8">
                 <table class="table">
                     <thead>
@@ -45,11 +52,9 @@
                     </tbody>
                 </table>
             </div>
+
             <div class="col-2"></div>
 
-            <div class="col-12 d-flex justify-content-center align-items-center">
-                <button class="btn"><i class="fa fa-download"></i> Download CVS</button>
-            </div>
         </div>
     </div>
 

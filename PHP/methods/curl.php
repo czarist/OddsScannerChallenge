@@ -25,7 +25,6 @@ $oXML = new SimpleXMLElement($sXML);
 setlocale(LC_MONETARY, 'en_US');
 $xml = $oXML[0]->Cube->Cube;
 $xml2array = json_decode(json_encode((array)$xml), TRUE);
-$currentData = $xml2array['@attributes']['time'];
 $currencyRates = $xml2array['Cube'];
 $usdValue = floatval($currencyRates[0]["@attributes"]['rate']);
 $arrayOfCurrents = [
@@ -50,8 +49,30 @@ foreach ($currencyRates as $currencyRate) {
 }
 
 if (isset($_POST['request'])) {
+
     if ($_POST['request'] == 'show') {
         header('Content-Type: application/json; charset=utf-8');
         print(json_encode($arrayOfCurrents, TRUE));
+    }
+
+    if ($_POST['request'] == 'csv') {
+
+        function outputCsv($assocDataArray)
+        {
+            if (!empty($assocDataArray)) {
+
+                $output = fopen('php://output', 'w');
+                fputcsv($output, ['Currency Code',   'Rate']);
+
+                foreach ($assocDataArray as $current) {
+                    fputcsv($output, [$current['currency'],   $current['rate']],  ";");
+                }
+
+                fclose($output);
+                exit;
+            }
+        }
+
+        return outputCsv($arrayOfCurrents);
     }
 }
