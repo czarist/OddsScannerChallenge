@@ -1,4 +1,5 @@
 <?php
+
 function xml_request($path)
 {
     $ch = curl_init();
@@ -15,12 +16,13 @@ function xml_request($path)
 function convertToUSD($currentValue, $usdValue): float
 {
     $convertedValue = $currentValue / $usdValue;
-    return round($convertedValue, 3);
+    return round($convertedValue, 2);
 }
 
 $sXML = xml_request('https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml?5105e8233f9433cf70ac379d6ccc5775');
 $oXML = new SimpleXMLElement($sXML);
 
+setlocale(LC_MONETARY, 'en_US');
 $xml = $oXML[0]->Cube->Cube;
 $xml2array = json_decode(json_encode((array)$xml), TRUE);
 $currentData = $xml2array['@attributes']['time'];
@@ -47,4 +49,9 @@ foreach ($currencyRates as $currencyRate) {
     }
 }
 
-print(json_encode($arrayOfCurrents, TRUE));
+if (isset($_POST['request'])) {
+    if ($_POST['request'] == 'show') {
+        header('Content-Type: application/json; charset=utf-8');
+        print(json_encode($arrayOfCurrents, TRUE));
+    }
+}

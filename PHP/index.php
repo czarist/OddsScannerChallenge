@@ -30,16 +30,30 @@
             <div class="col-12 d-flex justify-content-center align-items-center">
                 <img src="library/img.png" alt="img" width="250">
             </div>
-            <div class="table">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Currency</th>
+                            <th scope="col">Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table">
 
+                    </tbody>
+                </table>
             </div>
+            <div class="col-2"></div>
+
             <div class="col-12 d-flex justify-content-center align-items-center">
                 <button class="btn"><i class="fa fa-download"></i> Download CVS</button>
             </div>
         </div>
     </div>
 
-    <footer class="footer bg-black text-center pt-2">
+    <footer class="footer bg-black text-center pt-2 mt-5">
         <p class="text-white">&copy;<?= date("Y") ?></p>
     </footer>
 
